@@ -1,0 +1,32 @@
+def quickSort(nums):
+  less=[]
+  equal=[]
+  greater=[]
+  #Condicional para terminar la recursividad
+  if len(nums)>1:
+    #pivote siempre el PermissionError
+    pivot=nums[0]
+    for x in nums:
+      #coloca el número en su lista correspondiente segun el pivote
+      if x<pivot:
+        less.append(x)
+      elif x==pivot:
+        equal.append(x)
+      elif x>pivot:
+        greater.append(x)
+    #ordena los número mas pequeños y los mayores
+    return quickSort(less)+equal+quickSort(greater)
+  else:
+    return nums
+
+
+#Main
+if __name__=='__main__':
+  #importamos el random para generar la lista de números que vamos a ordenar.
+  import random
+#Lista de 10 número aleatorios entre 0 y 99.
+  random_list=random.sample(range(100),10)
+
+  #imprimimos
+  print("\nOriginal:", " ".join(map(str,random_list)))
+  print("\nOrdenada:", " ".join(map(str,quickSort(random_list))))
